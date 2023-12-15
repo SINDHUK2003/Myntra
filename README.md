@@ -47,7 +47,7 @@ For a visual guide on the installation process, you can watch the video tutorial
 3. **Configure MySQL Server:**
    - Set a root password and configure other settings during the installation.
 
-For a visual guide on the installation process, you can watch the video tutorial available on [YouTube](#https://www.youtube.com/watch?v=iQjmY2Q5n3o).
+For a visual guide on the installation process, you can watch the video tutorial available on [YouTube](https://www.youtube.com/watch?v=iQjmY2Q5n3o).
 
 ### Verify Java and MySQL
 
