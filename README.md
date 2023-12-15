@@ -42,8 +42,7 @@ For a visual guide on the installation process, you can watch the video tutorial
    - Visit [MySQL Downloads](https://dev.mysql.com/downloads/) to download the latest version of MySQL.
 
 2. **Select Installer:**
-   - Choose the appropriate installer for your operating system (e.g., MySQL Installer for Windows, MySQL Community Server for Linux).
-
+   - Choose the appropriate installer for your operating system.
 3. **Configure MySQL Server:**
    - Set a root password and configure other settings during the installation.
 
@@ -58,5 +57,36 @@ For a visual guide on the installation process, you can watch the video tutorial
    - Open a command prompt or terminal and run `mysql -u root -p`. Enter the root password when prompted.
 
 With Java and MySQL successfully installed, you can proceed with setting up Myntra app backend.
+
+## Key Features
+### Public User
+(i) Search Product <br>
+(ii) View Product <br>
+(iii) Create User Account <br>
+
+### Signin User
+(i) Search Product <br>
+(ii) View Product <br>
+(iii) Create Order <br>
+(iv) Change Email & Password <br>
+(v) Can View Previous Order with UPDATE and DELETE <br>
+
+### Admin
+(i) Add New Product <br>
+(ii) Update Product <br>
+(iii) Delete Product <br>
+(iv) Confirm Order <br> 
+
+### Seller
+(i) List Products
+(ii) Order Management
+(iii) Inventory Management
+(iv) Sales Analytics
+
+### Notifications
+(i)General Notifications
+(ii)Personalized Notifications
+(iii)Communication Preferences
+
 
 
