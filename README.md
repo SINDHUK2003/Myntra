@@ -78,15 +78,15 @@ With Java and MySQL successfully installed, you can proceed with setting up Mynt
 (iv) Confirm Order <br> 
 
 ### Seller
-(i) List Products
-(ii) Order Management
-(iii) Inventory Management
-(iv) Sales Analytics
+(i) List Products <br>
+(ii) Order Management <br>
+(iii) Inventory Management <br>
+(iv) Sales Analytics <br>
 
 ### Notifications
-(i)General Notifications
-(ii)Personalized Notifications
-(iii)Communication Preferences
+(i)General Notifications <br>
+(ii)Personalized Notifications <br>
+(iii)Communication Preferences <br>
 
 
 
