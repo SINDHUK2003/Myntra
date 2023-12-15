@@ -84,9 +84,9 @@ With Java and MySQL successfully installed, you can proceed with setting up Mynt
 (iv) Sales Analytics <br>
 
 ### Notifications
-(i)General Notifications <br>
-(ii)Personalized Notifications <br>
-(iii)Communication Preferences <br>
+(i) General Notifications <br>
+(ii) Personalized Notifications <br>
+(iii) Communication Preferences <br>
 
 ### Assistance
 (i) Customer Support Chat <br>
