@@ -13,7 +13,7 @@ The backend of the Myntra app is developed using Java, a versatile and robust pr
 
 ### SQL
 
-Structured Query Language (SQL) is employed for managing the database of the Myntra app. SQL is a standard language for interacting with relational databases, and it offers a powerful and efficient way to handle data. The backend uses SQL queries to perform operations such as data retrieval, insertion, and modification.
+Structured Query Language (SQL) is employed for managing the database of the Myntra app. SQL is a standard language for interacting with relational databases and it offers a powerful and efficient way to handle data. The backend uses SQL queries to perform operations such as data retrieval, insertion, and modification.
 
 ## Installation Procedure
 
@@ -30,4 +30,6 @@ To set up the backend environment for the Myntra app, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/myntra-backend.git
+   git clone https://github.com/SINDHUK2003/myntra-backend.git
+
+   
