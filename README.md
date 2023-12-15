@@ -88,5 +88,11 @@ With Java and MySQL successfully installed, you can proceed with setting up Mynt
 (ii)Personalized Notifications <br>
 (iii)Communication Preferences <br>
 
+### Assistance
+(i) Customer Support Chat <br>
+(ii) Return and Refund Requests <br>
+(iii) Help Center <br>
+(iv) FAQs <br>
+
 
 
