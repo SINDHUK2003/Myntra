@@ -22,7 +22,6 @@ Structured Query Language (SQL) is employed for managing the database of the Myn
 ## Installation Procedure
 
 To set up the backend environment for the Myntra app, follow these steps:
-## Installation Procedure
 
 ### Install Java (JDK 17)
 
@@ -35,6 +34,8 @@ To set up the backend environment for the Myntra app, follow these steps:
 3. **Set Environment Variables (Optional but recommended):**
    - Set the `JAVA_HOME` environment variable to point to the JDK installation directory. Add the `bin` directory to the system `PATH` variable.
 
+For a visual guide on the installation process, you can watch the video tutorial available on [YouTube](https://www.youtube.com/watch?v=gENqw-O2kps).
+
 ### Install MySQL (Latest Version)
 
 1. **Download MySQL:**
@@ -46,6 +47,7 @@ To set up the backend environment for the Myntra app, follow these steps:
 3. **Configure MySQL Server:**
    - Set a root password and configure other settings during the installation.
 
+For a visual guide on the installation process, you can watch the video tutorial available on [YouTube](#https://www.youtube.com/watch?v=iQjmY2Q5n3o).
 
 ### Verify Java and MySQL
 
