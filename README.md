@@ -23,7 +23,7 @@ Structured Query Language (SQL) is employed for managing the database of the Myn
 
 To set up the backend environment for the Myntra app, follow these steps:
 
-### Install Java (JDK 17)
+### Install Java 
 
 1. **Download JDK:**
    - Visit [Oracle's official website](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) to download the latest version of the Java Development Kit (JDK).
@@ -31,7 +31,7 @@ To set up the backend environment for the Myntra app, follow these steps:
 2. **Install JDK:**
    - Follow the installation instructions provided for your operating system on the Oracle website.
 
-3. **Set Environment Variables (Optional but recommended):**
+3. **Set Environment Variables:**
    - Set the `JAVA_HOME` environment variable to point to the JDK installation directory. Add the `bin` directory to the system `PATH` variable.
 
 For a visual guide on the installation process, you can watch the video tutorial available on [YouTube](https://www.youtube.com/watch?v=gENqw-O2kps).
