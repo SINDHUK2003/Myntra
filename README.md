@@ -26,7 +26,7 @@ To set up the backend environment for the Myntra app, follow these steps:
 ### Install Java 
 
 1. **Download JDK:**
-   - Visit [Oracle's official website](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) to download the latest version of the Java Development Kit (JDK).
+   - Visit [Oracle's official website](https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-macos.htm#GUID-F575EB4A-70D3-4AB4-A20E-DBE95171AB5F) to download the latest version of the Java Development Kit (JDK).
 
 2. **Install JDK:**
    - Follow the installation instructions provided for your operating system on the Oracle website.
