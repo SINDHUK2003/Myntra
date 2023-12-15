@@ -1,6 +1,10 @@
 
 # Myntra App Backend Development Documentation
 
+### Back-End
+  (i) Java <br>
+  (ii) MySQL <br>
+
 ## Project Overview
 
 This repository contains the backend development codebase for the Myntra app. The backend is implemented using Java programming language and utilizes SQL for database management. This documentation provides information about the language and database details used in the project, as well as the installation procedure to set up the backend environment.
@@ -9,7 +13,7 @@ This repository contains the backend development codebase for the Myntra app. Th
 
 ### Java
 
-The backend of the Myntra app is developed using Java, a versatile and robust programming language. Java was chosen for its platform independence, object-oriented nature, and extensive community support. The codebase follows best practices and design patterns to ensure maintainability and scalability.
+The backend of the Myntra app is developed using Java, a versatile and robust programming language. Java was chosen for its platform independence, object-oriented nature and extensive community support. The codebase follows best practices and design patterns to ensure maintainability and scalability.
 
 ### SQL
 
@@ -39,18 +43,9 @@ To set up the backend environment for the Myntra app, follow these steps:
 2. **Select Installer:**
    - Choose the appropriate installer for your operating system (e.g., MySQL Installer for Windows, MySQL Community Server for Linux).
 
-3. **Follow Installation Wizard:**
-   - Run the downloaded installer and follow the installation wizard. Select at least the MySQL Server component.
-
-4. **Configure MySQL Server:**
+3. **Configure MySQL Server:**
    - Set a root password and configure other settings during the installation.
 
-5. **Complete Installation:**
-   - Complete the installation process. The installer will set up MySQL Server as a service on Windows or start it on Linux.
-
-6. **Verify Installations:**
-   - Open a command prompt or terminal and run `java -version` to verify Java installation.
-   - Run `mysql --version` to verify MySQL installation.
 
 ### Verify Java and MySQL
 
@@ -60,13 +55,6 @@ To set up the backend environment for the Myntra app, follow these steps:
 2. **Verify MySQL Connection:**
    - Open a command prompt or terminal and run `mysql -u root -p`. Enter the root password when prompted.
 
-With Java and MySQL successfully installed, you can proceed with setting up your Myntra app backend, as outlined in the project's README file. Ensure that you update the database connection settings in your application accordingly.
+With Java and MySQL successfully installed, you can proceed with setting up Myntra app backend.
 
-### Project Setup
 
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/SINDHUK2003/myntra-backend.git
-
-   
