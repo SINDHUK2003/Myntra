@@ -94,6 +94,7 @@ With Java and MySQL successfully installed, you can proceed with setting up Mynt
 (iii) Help Center <br>
 (iv) FAQs <br>
 
-![Uploading Screenshot 2023-12-25 at 12.36.27 AM.png…]()
+<img width="792" alt="Screenshot 2023-12-25 at 12 36 27 AM" src="https://github.com/SINDHUK2003/Myntra/assets/102289855/923bfef7-777d-4a05-9d93-1f68e62d412c">
+
 
 
