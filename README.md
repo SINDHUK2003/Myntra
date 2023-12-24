@@ -94,5 +94,6 @@ With Java and MySQL successfully installed, you can proceed with setting up Mynt
 (iii) Help Center <br>
 (iv) FAQs <br>
 
+![Uploading Screenshot 2023-12-25 at 12.36.27 AM.png…]()
 
 
