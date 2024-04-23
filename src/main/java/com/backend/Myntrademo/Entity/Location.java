@@ -35,6 +35,7 @@ public class Location {
     @Column(name = "State")
     private String state;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "TypeOfAddress")
     private String typeofaddress;
 

@@ -28,7 +28,8 @@ public class Cart {
     @Column(name = "Quantity")
     private Integer quantity;
 
-    @Column(name = "Status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "CartStatus")
+    private String cartstatus;
 
 }

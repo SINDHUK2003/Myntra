@@ -21,19 +21,31 @@ public class ProfileService {
     @Autowired
     private MobileNumberRepo mobileNumberRepo;
 
-    public Profile createProfile(Profile profile, MobileNumber mobileNumber, Location location)
-    {
+
+    public Profile createProfile(Profile profile, MobileNumber mobileNumber, Location location) {
+
+        System.out.println("Profile received: " + profile);
+        System.out.println("MobileNumber received: " + mobileNumber);
+        System.out.println("Location received: " + location);
+
         profile.setMobileNumber(mobileNumber);
         profile.setLocation(location);
 
         if (mobileNumber != null) {
             mobileNumberRepo.save(mobileNumber);
+            System.out.println("MobileNumber saved: " + mobileNumber);
         }
         if (location != null) {
             locationRepo.save(location);
+            System.out.println("Location saved: " + location);
         }
-        return profileRepo.save(profile);
+
+        Profile savedProfile = profileRepo.save(profile);
+        System.out.println("Profile saved: " + savedProfile);
+
+        return savedProfile;
     }
+
 
     public void deleteProfile(int profileid)
     {

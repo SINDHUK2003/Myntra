@@ -5,13 +5,15 @@ import com.backend.Myntrademo.Service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class CartController {
 
     @Autowired
     private CartService cartService;
 
-    @PutMapping("/createCart")
+    @PostMapping("/createCart")
     public Cart createCart(@RequestBody Cart cart)
     {
         return cartService.createCart(cart);
@@ -28,6 +30,18 @@ public class CartController {
     public Cart getCart(@PathVariable("cartid") int cartid)
     {
         return cartService.getCart(cartid);
+    }
+
+    @PutMapping("/updateCart/{cartid}")
+    public Cart updateCart(@PathVariable("cartid") int cartid,@RequestBody Cart cart)
+    {
+        return cartService.updateCart(cartid, cart);
+    }
+
+    @GetMapping("/getCartByProfileId/{profileid}")
+    public List<Cart> getCartByProfileId(@PathVariable("profileid") int profileid)
+    {
+        return cartService.getCartByProfileId(profileid);
     }
 
 }
