@@ -17,14 +17,14 @@ public class CartController {
         return cartService.createCart(cart);
     }
 
-    @DeleteMapping("/deleteCart")
+    @DeleteMapping("/deleteCart/{cartid}")
     public String deleteCart(@PathVariable("cartid") int cartid)
     {
         cartService.deleteCart(cartid);
         return "Product Removed From Cart!";
     }
 
-    @GetMapping("/getCart")
+    @GetMapping("/getCart/{cartid}")
     public Cart getCart(@PathVariable("cartid") int cartid)
     {
         return cartService.getCart(cartid);
