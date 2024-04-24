@@ -1,7 +1,11 @@
 package com.backend.Myntrademo.Service;
 
 import com.backend.Myntrademo.Entity.Location;
+import com.backend.Myntrademo.Entity.MobileNumber;
+import com.backend.Myntrademo.Entity.Profile;
 import com.backend.Myntrademo.Repository.LocationRepo;
+import com.backend.Myntrademo.Repository.MobileNumberRepo;
+import com.backend.Myntrademo.Repository.ProfileRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +14,10 @@ import java.util.Optional;
 @Service
 public class LocationService {
 
+    @Autowired
+    private ProfileRepo profileRepo;
+    @Autowired
+    private MobileNumberRepo mobileNumberRepo;
     @Autowired
     private LocationRepo locationRepo;
 
@@ -39,4 +47,5 @@ public class LocationService {
 
         return locationRepo.save(location1);
     }
+
 }

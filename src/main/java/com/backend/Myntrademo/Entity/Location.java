@@ -1,5 +1,6 @@
 package com.backend.Myntrademo.Entity;
 
+import com.backend.Myntrademo.Enum.TypeOfAddress;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -37,6 +38,6 @@ public class Location {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "TypeOfAddress")
-    private String typeofaddress;
+    private TypeOfAddress typeofaddress;
 
 }

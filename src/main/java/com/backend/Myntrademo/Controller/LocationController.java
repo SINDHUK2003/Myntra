@@ -1,7 +1,11 @@
 package com.backend.Myntrademo.Controller;
 
 import com.backend.Myntrademo.Entity.Location;
+import com.backend.Myntrademo.Entity.MobileNumber;
+import com.backend.Myntrademo.Repository.MobileNumberRepo;
 import com.backend.Myntrademo.Service.LocationService;
+import com.backend.Myntrademo.Service.MobileNumberService;
+import com.backend.Myntrademo.Service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +13,15 @@ import org.springframework.web.bind.annotation.*;
 public class LocationController {
 
     @Autowired
+    private ProfileService profileService;
+    @Autowired
     private LocationService locationService;
+
+    @Autowired
+    private MobileNumberService mobileNumberService;
+
+
+
 
     @PostMapping("/createLocation")
     public Location createLocation(@RequestBody Location location)
@@ -34,8 +46,5 @@ public class LocationController {
     {
         return locationService.updateLocation(locationid, location);
     }
-
-
-
 
 }

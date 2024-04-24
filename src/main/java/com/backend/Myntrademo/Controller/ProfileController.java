@@ -4,6 +4,8 @@ import com.backend.Myntrademo.DTO.CreateProfileDTO;
 import com.backend.Myntrademo.Entity.Location;
 import com.backend.Myntrademo.Entity.MobileNumber;
 import com.backend.Myntrademo.Entity.Profile;
+import com.backend.Myntrademo.Service.LocationService;
+import com.backend.Myntrademo.Service.MobileNumberService;
 import com.backend.Myntrademo.Service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,12 @@ public class ProfileController {
 
     @Autowired
     private ProfileService profileService;
+
+    @Autowired
+    private MobileNumberService mobileNumberService;
+
+    @Autowired
+    private LocationService locationService;
 
     @PostMapping("/createProfile")
     public Profile createProfile(@RequestBody CreateProfileDTO createProfileDTO)
@@ -41,6 +49,7 @@ public class ProfileController {
     {
         return profileService.updateProfile(profileid, profile);
     }
+
 
 }
 

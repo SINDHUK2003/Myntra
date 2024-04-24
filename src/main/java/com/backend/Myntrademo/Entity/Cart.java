@@ -2,6 +2,8 @@ package com.backend.Myntrademo.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.backend.Myntrademo.Enum.CartStatus;
+
 
 @Entity
 @Data
@@ -30,6 +32,6 @@ public class Cart {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "CartStatus")
-    private String cartstatus;
+    private CartStatus cartstatus;
 
 }
