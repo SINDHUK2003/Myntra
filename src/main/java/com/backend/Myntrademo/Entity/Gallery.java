@@ -1,6 +1,7 @@
 package com.backend.Myntrademo.Entity;
 
 
+import com.backend.Myntrademo.Enum.Type;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,6 +40,7 @@ public class Gallery {
     @Column(name = "Viedo2")
     private String video2;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "Type")
-    private String type;
+    private Type type;
 }
