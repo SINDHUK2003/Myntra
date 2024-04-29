@@ -2,5 +2,5 @@ package com.backend.Myntrademo.Enum;
 
 public enum OrderStatus {
 
-    PENDING, DELIVERED
+    PENDING, PROCESSING, SHIPPED, DELIVERED
 }
