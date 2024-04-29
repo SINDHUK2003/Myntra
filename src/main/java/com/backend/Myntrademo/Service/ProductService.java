@@ -1,8 +1,10 @@
 package com.backend.Myntrademo.Service;
 
 import com.backend.Myntrademo.Entity.Category;
+import com.backend.Myntrademo.Entity.Gallery;
 import com.backend.Myntrademo.Entity.Product;
 import com.backend.Myntrademo.Repository.CategoryRepo;
+import com.backend.Myntrademo.Repository.GalleryRepo;
 import com.backend.Myntrademo.Repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +20,21 @@ public class ProductService {
     @Autowired
     private CategoryRepo categoryRepo;
 
-    public Product createProduct(Product product, Category category)
+    @Autowired
+    private GalleryRepo galleryRepo;
+
+    public Product createProduct(Product product, Category category, Gallery gallery)
     {
         product.setCategory(category);
+        product.setGallery(gallery);
 
         if(category != null)
         {
             categoryRepo.save(category);
+        }
+        if(gallery != null)
+        {
+            galleryRepo.save(gallery);
         }
 
         return productRepo.save(product);

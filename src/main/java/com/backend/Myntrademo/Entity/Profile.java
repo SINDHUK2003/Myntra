@@ -25,6 +25,9 @@ public class Profile {
     @Column(name = "Email")
     private String email;
 
+    @Column(name = "Password")
+    private String password;
+
     @Column(name = "Gender")
     private String gender;
 

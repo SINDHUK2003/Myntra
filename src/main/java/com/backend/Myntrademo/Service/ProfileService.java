@@ -22,6 +22,18 @@ public class ProfileService {
     private MobileNumberRepo mobileNumberRepo;
 
 
+    public String login(String email, String password) {
+        Profile profile = profileRepo.findByEmail(email);
+        if (profile != null && profile.getPassword().equals(password))
+        {
+            return "Login successful!";
+        }
+        else
+        {
+            return "Invalid email or password";
+        }
+    }
+
     public Profile createProfile(Profile profile, MobileNumber mobileNumber, Location location) {
 
         System.out.println("Profile received: " + profile);

@@ -2,6 +2,7 @@ package com.backend.Myntrademo.Controller;
 
 import com.backend.Myntrademo.DTO.CreateProductDTO;
 import com.backend.Myntrademo.Entity.Category;
+import com.backend.Myntrademo.Entity.Gallery;
 import com.backend.Myntrademo.Entity.Product;
 import com.backend.Myntrademo.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,9 @@ public class ProductController {
     {
         Product product = createProductDTO.getProduct();
         Category category = createProductDTO.getCategory();
+        Gallery gallery = createProductDTO.getGallery();
 
-        return productService.createProduct(product, category);
+        return productService.createProduct(product, category, gallery);
     }
 
     @DeleteMapping("/deleteProduct/{productid}")

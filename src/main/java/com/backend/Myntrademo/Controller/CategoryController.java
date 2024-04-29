@@ -41,6 +41,17 @@ public class CategoryController {
         return categoryService.addSubcategory(maincategory, subcategory);
     }
 
+    @DeleteMapping("/deleteSubcategory/{maincategory}")
+    public Category deleteSubcategory(@PathVariable("maincategory") String maincategory, @RequestBody Map<String, String> requestBody) {
+        String subcategory = requestBody.get("subcategory");
+        Category category = categoryService.getCategoryByMaincategory(maincategory);
+        if (category != null) {
+            return categoryService.deleteSubcategory(category, subcategory);
+        } else {
+            throw new RuntimeException("Main category not found: " + maincategory);
+        }
+    }
+
 
 
 

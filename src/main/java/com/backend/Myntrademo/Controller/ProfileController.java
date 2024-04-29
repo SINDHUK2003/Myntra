@@ -1,6 +1,7 @@
 package com.backend.Myntrademo.Controller;
 
 import com.backend.Myntrademo.DTO.CreateProfileDTO;
+import com.backend.Myntrademo.DTO.LoginDTO;
 import com.backend.Myntrademo.Entity.Location;
 import com.backend.Myntrademo.Entity.MobileNumber;
 import com.backend.Myntrademo.Entity.Profile;
@@ -21,6 +22,17 @@ public class ProfileController {
 
     @Autowired
     private LocationService locationService;
+
+
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginDTO loginDTO)
+    {
+        String email = loginDTO.getEmail();
+        String password = loginDTO.getPassword();
+
+        return profileService.login(email, password);
+    }
 
     @PostMapping("/createProfile")
     public Profile createProfile(@RequestBody CreateProfileDTO createProfileDTO)
@@ -53,9 +65,3 @@ public class ProfileController {
 
 }
 
-
-//@PostMapping("/createProfile")
-//public Profile postCreateProfile(@RequestBody Profile profile)
-//{
-//    return profileService.createProfile(profile);
-//}

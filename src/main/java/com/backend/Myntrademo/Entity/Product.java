@@ -40,5 +40,9 @@ public class Product {
     @JoinColumn(name = "categoryid")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "galleryid")
+    private Gallery gallery;
+
 
 }
