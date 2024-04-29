@@ -29,11 +29,12 @@ public class Review {
     private Rating rating;
 
     @ManyToOne
-    @JoinColumn(name = "Profile")
+    @JoinColumn(name = "ProfileId")
     private Profile profile;
 
     @ManyToOne
-    @JoinColumn(name = "Product")
+    @JoinColumn(name = "ProductId")
     private Product product;
+
 
 }
