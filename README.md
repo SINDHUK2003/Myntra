@@ -1,17 +1,21 @@
-# MyntraDemo Backend
+# Myntra Backend
 
-This is the backend replica of the Myntra, which is a simplified e-commerce platform. It provides RESTful APIs for managing user profiles, including login, profile creation, retrieval, update, and deletion.
+This is the backend replica of the Myntra, which is a simplified e-commerce platform. It provides RESTful APIs for managing user profiles, Mobile Number, Location, Product, Orders, Reviews and Payment.
 
-## Technologies Used
+
+## Tech Stacks
 
 - Java
 - Spring Boot
 - MySQL
 
+## Requirements
+
 - To Download JDK : [https://www.oracle.com/in/java/technologies/downloads/]
 - To Download Spring Boot Project File : [https://start.spring.io/]
 - To Download MySQL : [https://www.mysql.com/downloads/]
 - To Download IntelliJ IDEA : [https://www.jetbrains.com/idea/download/]
+- To Download Postman : []
 
 
 1. **Clone the repository:**
@@ -24,7 +28,7 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
 
    Run MyntrademoApplication.java
 
-3. **Checks**
+3. **localhost**
 
 - Profile
      
