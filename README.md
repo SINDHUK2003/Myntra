@@ -133,3 +133,18 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
   http://localhost:8080/updateReview/{reviewid}
 
   http://localhost:8080/deleteReview/{reviewid}
+
+
+## ER DIAGRAM
+
+<img width="1108" alt="Screenshot 2024-05-06 at 7 07 11 PM" src="https://github.com/SINDHUK2003/Myntra/assets/102289855/19c3d575-64df-4ab5-8200-2b6a1f9ef9a9">
+
+
+
+
+
+
+
+
+
+
