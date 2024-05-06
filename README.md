@@ -15,14 +15,13 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
 - To Download Spring Boot Project File : [https://start.spring.io/]
 - To Download MySQL : [https://www.mysql.com/downloads/]
 - To Download IntelliJ IDEA : [https://www.jetbrains.com/idea/download/]
-- To Download Postman : []
+- To Download Postman : [https://www.postman.com/downloads/]
 
 
 1. **Clone the repository:**
 
    ```bash
    git clone https://github.com/SINDHUK2003/Myntra.git
-
    
 2. **Navigate to MyntrademoApplication**
 
