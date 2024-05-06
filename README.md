@@ -38,6 +38,7 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
 
    http://localhost:8080/deleteProfile/1
 
+
    - Mobile Number
    ```bash
    http://localhost:8080/createMobile
@@ -57,6 +58,8 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
 
   http://localhost:8080/deleteLocation/1
 
+
+
   - Product
   ```bash
   http://localhost:8080/createProduct
@@ -66,6 +69,8 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
   http://localhost:8080/updateProduct/1
 
   http://localhost:8080/deleteProduct/1
+
+
 
   - Cart
   ```bash
@@ -79,6 +84,8 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
 
   http://localhost:8080/deleteCart/1
 
+
+
   - Category
   ```bash
   http://localhost:8080/createCategory
@@ -91,6 +98,8 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
 
   http://localhost:8080/getCategory/2
 
+
+
   - Gallery
   ```bash
   http://localhost:8080/createGallery
@@ -102,6 +111,8 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
   http://localhost:8080/updateGallery/1
 
   http://localhost:8080/deleteGallery/1
+
+
 
   - Review
   ```bash
