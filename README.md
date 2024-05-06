@@ -17,7 +17,7 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
 1. **Clone the repository:**
 
    ```bash
-   git clone
+   git clone https://github.com/SINDHUK2003/Myntra.git
 
    
 2. **Navigate to MyntrademoApplication**
@@ -27,6 +27,7 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
 3. **Checks**
 
    - Profile
+     
    ```bash
    http://localhost:8080/createProfile
 
@@ -40,6 +41,7 @@ This is the backend replica of the Myntra, which is a simplified e-commerce plat
 
 
    - Mobile Number
+
    ```bash
    http://localhost:8080/createMobile
 
