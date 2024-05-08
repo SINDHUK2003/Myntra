@@ -9,28 +9,27 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/order")
 public class OrderController {
 
     @Autowired
     private OrderService orderService;
 
-    @PostMapping("/create")
+    @PostMapping("/createOrder")
     public Order createOrder(@RequestBody Order order) {
         return orderService.createOrder(order);
     }
 
-    @GetMapping("/{orderId}")
+    @GetMapping("getOrder/{orderId}")
     public Order getOrder(@PathVariable int orderId) {
         return orderService.getOrder(orderId);
     }
 
-    @PutMapping("/update/{orderId}")
+    @PutMapping("/updateOrder/{orderId}")
     public Order updateOrder(@PathVariable int orderId, @RequestBody Order updatedOrder) {
         return orderService.updateOrder(orderId, updatedOrder);
     }
 
-    @DeleteMapping("/delete/{orderId}")
+    @DeleteMapping("/deleteOrder/{orderId}")
     public void deleteOrder(@PathVariable int orderId) {
         orderService.deleteOrder(orderId);
     }

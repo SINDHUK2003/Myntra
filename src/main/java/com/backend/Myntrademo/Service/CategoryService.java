@@ -69,21 +69,31 @@ public class CategoryService {
     }
 
     public Category deleteSubcategory(Category category, String subcategory) {
-        if (subcategory.equals(category.getSubcategory1())) {
+        if (subcategory.equals(category.getSubcategory1()))
+        {
             category.setSubcategory1(null);
-        } else if (subcategory.equals(category.getSubcategory2())) {
+        }
+        else if (subcategory.equals(category.getSubcategory2()))
+        {
             category.setSubcategory2(null);
-        } else if (subcategory.equals(category.getSubcategory3())) {
+        }
+        else if (subcategory.equals(category.getSubcategory3()))
+        {
             category.setSubcategory3(null);
-        } else if (subcategory.equals(category.getSubcategory4())) {
+        }
+        else if (subcategory.equals(category.getSubcategory4()))
+        {
             category.setSubcategory4(null);
-        } else if (subcategory.equals(category.getSubcategory5())) {
+        }
+        else if (subcategory.equals(category.getSubcategory5()))
+        {
             category.setSubcategory5(null);
         }
         return categoryRepo.save(category);
     }
 
-    public Category getCategoryByMaincategory(String maincategory) {
+    public Category getCategoryByMaincategory(String maincategory)
+    {
         return categoryRepo.findByMaincategory(maincategory);
     }
 

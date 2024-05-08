@@ -36,10 +36,6 @@ public class ProfileService {
 
     public Profile createProfile(Profile profile, MobileNumber mobileNumber, Location location) {
 
-        System.out.println("Profile received: " + profile);
-        System.out.println("MobileNumber received: " + mobileNumber);
-        System.out.println("Location received: " + location);
-
         profile.setMobileNumber(mobileNumber);
         profile.setLocation(location);
 
