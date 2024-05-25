@@ -55,19 +55,5 @@ public class ProductController {
         return productService.searchProductByName(productname);
     }
 
-//    @GetMapping("/searchProductByBrand")
-//    public List<Product> searchProductByBrand(@RequestParam("brand") String brand) {
-//        return productService.searchProductByBrand(brand);
-//    }
-
-//    @GetMapping("/searchProductByCategory")
-//    public List<Product> searchProductByCategory(@RequestParam("category") String category) {
-//        return productService.searchProductByCategory(category);
-//    }
-//
-
-
-
-
 
 }
