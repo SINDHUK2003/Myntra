@@ -9,6 +9,7 @@ import com.backend.Myntrademo.Repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -64,6 +65,27 @@ public class ProductService {
         return productRepo.save(product1);
 
     }
+
+    public List<Product> getAllProduct()
+    {
+        return productRepo.findAll();
+    }
+
+    public List<Product> searchProductByName(String productname)
+    {
+        return productRepo.findByProductname(productname);
+    }
+
+//    public List<Product> searchProductByBrand(String brand)
+//    {
+//        return productRepo.findByProductbrand(brand);
+//    }
+
+//    public List<Product> searchProductByCategory(String category)
+//    {
+//        return productRepo.findByCategory(category);
+//    }
+//
 
 
 

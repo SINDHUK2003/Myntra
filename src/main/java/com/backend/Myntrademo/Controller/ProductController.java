@@ -8,6 +8,8 @@ import com.backend.Myntrademo.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ProductController {
 
@@ -42,6 +44,28 @@ public class ProductController {
     {
         return productService.updateProduct(productid, product);
     }
+
+    @GetMapping("/getAllProducts")
+    public List<Product> getAllProducts() {
+        return productService.getAllProduct();
+    }
+
+    @GetMapping("/searchProductByName")
+    public List<Product> searchProductByName(@RequestParam("productname") String productname) {
+        return productService.searchProductByName(productname);
+    }
+
+//    @GetMapping("/searchProductByBrand")
+//    public List<Product> searchProductByBrand(@RequestParam("brand") String brand) {
+//        return productService.searchProductByBrand(brand);
+//    }
+
+//    @GetMapping("/searchProductByCategory")
+//    public List<Product> searchProductByCategory(@RequestParam("category") String category) {
+//        return productService.searchProductByCategory(category);
+//    }
+//
+
 
 
 

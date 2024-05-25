@@ -14,4 +14,6 @@ public interface CartRepo extends JpaRepository<Cart,Integer>
 {
     @Query("SELECT c FROM Cart c WHERE c.profile.profileid = :profileId")
     List<Cart> getCartByProfileId(@Param("profileId") int profileId);
+
+
 }

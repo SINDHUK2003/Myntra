@@ -24,13 +24,16 @@ public class OrderController {
         return orderService.getOrder(orderId);
     }
 
+
     @PutMapping("/updateOrder/{orderId}")
     public Order updateOrder(@PathVariable int orderId, @RequestBody Order updatedOrder) {
         return orderService.updateOrder(orderId, updatedOrder);
     }
 
+
     @DeleteMapping("/deleteOrder/{orderId}")
-    public void deleteOrder(@PathVariable int orderId) {
+    public String deleteOrder(@PathVariable int orderId) {
         orderService.deleteOrder(orderId);
+        return "Order deleted !";
     }
 }

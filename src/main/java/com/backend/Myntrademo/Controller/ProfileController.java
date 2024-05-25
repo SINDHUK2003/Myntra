@@ -2,6 +2,7 @@ package com.backend.Myntrademo.Controller;
 
 import com.backend.Myntrademo.DTO.CreateProfileDTO;
 import com.backend.Myntrademo.DTO.LoginDTO;
+import com.backend.Myntrademo.DTO.ResetPasswordRequest;
 import com.backend.Myntrademo.Entity.Location;
 import com.backend.Myntrademo.Entity.MobileNumber;
 import com.backend.Myntrademo.Entity.Profile;
@@ -50,6 +51,13 @@ public class ProfileController {
     public Profile updateProfile (@PathVariable("profileid") int profileid, @RequestBody Profile profile)
     {
         return profileService.updateProfile(profileid, profile);
+    }
+
+    @PostMapping("/resetPassword")
+    public String resetPassword(@RequestBody ResetPasswordRequest resetPasswordRequest) {
+        String email = resetPasswordRequest.getEmail();
+        String newPassword = resetPasswordRequest.getNewPassword();
+        return profileService.resetPassword(email, newPassword);
     }
 
 

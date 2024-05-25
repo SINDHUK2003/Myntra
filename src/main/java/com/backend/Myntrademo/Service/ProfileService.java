@@ -78,6 +78,17 @@ public class ProfileService {
         return profileRepo.save(profile1);
     }
 
+    public String resetPassword(String email, String newPassword) {
+        Profile profile = profileRepo.findByEmail(email);
+        if (profile != null) {
+            profile.setPassword(newPassword);
+            profileRepo.save(profile);
+            return "Password reset successful!";
+        } else {
+            return "User with email " + email + " not found!";
+        }
+    }
+
 
 
 }
