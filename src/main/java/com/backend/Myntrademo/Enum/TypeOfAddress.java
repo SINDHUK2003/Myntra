@@ -1,5 +1,5 @@
 package com.backend.Myntrademo.Enum;
 
 public enum TypeOfAddress {
-    BILLING, SHIPPING
+    BILLING, SHIPPING, ADMIN, EMPLOYEE, SELLER
 }

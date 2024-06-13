@@ -1,5 +1,6 @@
 package com.backend.Myntrademo.Entity;
 
+import com.backend.Myntrademo.Enum.ProfileType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,13 +17,13 @@ public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ProfileId")
+    @Column(name = "ProfileId", unique = true)
     private Integer profileid;
 
     @Column(name = "UserName")
     private String username;
 
-    @Column(name = "Email")
+    @Column(name = "Email", unique = true)
     private String email;
 
     @Column(name = "Password")
@@ -42,4 +43,7 @@ public class Profile {
     @JoinColumn(name = "locationid")
     private Location location;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "profiletype")
+    private ProfileType profileType;
 }

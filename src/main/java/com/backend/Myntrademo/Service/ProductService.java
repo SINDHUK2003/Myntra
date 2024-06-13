@@ -24,57 +24,89 @@ public class ProductService {
     @Autowired
     private GalleryRepo galleryRepo;
 
-    public Product createProduct(Product product, Category category, Gallery gallery)
-    {
-        product.setCategory(category);
-        product.setGallery(gallery);
+    @Autowired
+    private ProfileService profileService;
 
-        if(category != null)
-        {
-            categoryRepo.save(category);
-        }
-        if(gallery != null)
-        {
-            galleryRepo.save(gallery);
-        }
+    public Product createProduct(int profileId, Product product, Category category, Gallery gallery) {
+        if (profileService.isSellerLoggedIn(profileId)) {
+            product.setCategory(category);
+            product.setGallery(gallery);
 
-        return productRepo.save(product);
+            if(category != null) {
+                categoryRepo.save(category);
+            }
+            if(gallery != null) {
+                galleryRepo.save(gallery);
+            }
+
+            return productRepo.save(product);
+        } else {
+            throw new IllegalArgumentException("Only logged-in sellers can create products.");
+        }
     }
-    public Product getProduct(int productid)
-    {
-        Optional<Product> dispProduct = productRepo.findById(productid);
+
+    public void deleteProduct(int profileId, int productId) {
+        if (profileService.isEmpSelAdmin(profileId)) {
+            productRepo.deleteById(productId);
+        } else {
+            throw new IllegalArgumentException("Only logged-in employees or sellers can delete products.");
+        }
+    }
+
+    public Product updateProduct(int profileId, int productId, Product product) {
+        if (profileService.isSellerLoggedIn(profileId)) {
+            Product product1 = productRepo.findById(productId).orElseThrow(() -> new RuntimeException("Product not found with ProductId : " + productId));
+
+            product1.setProductname(product.getProductname());
+            product1.setDescription((product.getDescription()));
+            product1.setBrand(product.getBrand());
+            product1.setSize(product.getSize());
+            product1.setMrp(product.getMrp());
+            product1.setStock(product.getStock());
+
+            return productRepo.save(product1);
+        } else {
+            throw new IllegalArgumentException("Only logged-in employees or sellers can update products.");
+        }
+    }
+
+    public Product getProduct(int productId) {
+        Optional<Product> dispProduct = productRepo.findById(productId);
         return dispProduct.orElse(null);
     }
 
-    public void deleteProduct(int productid)
-    {
-        productRepo.deleteById(productid);
-    }
-
-    public Product updateProduct(int productid, Product product)
-    {
-        Product product1 = productRepo.findById(productid).orElseThrow(()-> new RuntimeException("Product not found with ProductId : " +productid));
-
-        product1.setProductname(product.getProductname());
-        product1.setDescription((product.getDescription()));
-        product1.setBrand(product.getBrand());
-        product1.setSize(product.getSize());
-        product1.setMrp(product.getMrp());
-        product1.setStock(product.getStock());
-
-        return productRepo.save(product1);
-
-    }
-
-    public List<Product> getAllProduct()
-    {
+    public List<Product> getAllProduct() {
         return productRepo.findAll();
     }
 
-    public List<Product> searchProductByName(String productname)
-    {
+    public List<Product> searchProductByName(String productname) {
         return productRepo.findByProductname(productname);
     }
+
+    public List<Product> ProductsAboveMRP(float price) {
+        return productRepo.MrpGreaterThan(price);
+    }
+
+    public List<Product> ProductsBelowMRP(float price) {
+        return productRepo.MrpLessThan(price);
+    }
+
+    public List<Product> SearchProductsByBrand(String brand) {
+        return productRepo.findByBrand(brand);
+    }
+
+    public List<Product> findProductsByPriceRange(float startPrice, float endPrice) {
+        return productRepo.findProductsByMrpBetween(startPrice, endPrice);
+    }
+
+    public List<Product> searchProductByCategory(String category) {
+        return productRepo.findByCategoryMaincategory(category);
+    }
+
+
+}
+
+
 
 //    public List<Product> searchProductByBrand(String brand)
 //    {
@@ -86,8 +118,37 @@ public class ProductService {
 //        return productRepo.findByCategory(category);
 //    }
 //
+//public Product createProduct(Product product, Category category, Gallery gallery)
+//{
+//    product.setCategory(category);
+//    product.setGallery(gallery);
+//
+//    if(category != null)
+//    {
+//        categoryRepo.save(category);
+//    }
+//    if(gallery != null)
+//    {
+//        galleryRepo.save(gallery);
+//    }
+//
+//    return productRepo.save(product);
+//}
 
+//public void deleteProduct(int productid) {
+//    productRepo.deleteById(productid);
+//}
+//public Product updateProduct(int productid, Product product) {
+//    Product product1 = productRepo.findById(productid).orElseThrow(() -> new RuntimeException("Product not found with ProductId : " + productid));
+//
+//    product1.setProductname(product.getProductname());
+//    product1.setDescription((product.getDescription()));
+//    product1.setBrand(product.getBrand());
+//    product1.setSize(product.getSize());
+//    product1.setMrp(product.getMrp());
+//    product1.setStock(product.getStock());
+//
+//    return productRepo.save(product1);
+//
+//}
 
-
-
-}

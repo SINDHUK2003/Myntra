@@ -18,52 +18,48 @@ public class CartController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping("/createCart")
-    public Cart createCart(@RequestBody Cart cart)
-    {
-        return cartService.createCart(cart);
+    @PostMapping("/createCart/{profileId}")
+    public Cart createCart(@PathVariable("profileId") int profileId, @RequestBody Cart cart) {
+        return cartService.createCart(profileId, cart);
     }
 
-    @DeleteMapping("/deleteCart/{cartid}")
-    public String deleteCart(@PathVariable("cartid") int cartid)
-    {
-        cartService.deleteCart(cartid);
+    @DeleteMapping("/deleteCart/{profileId}/{cartid}")
+    public String deleteCart(@PathVariable("profileId") int profileId, @PathVariable("cartid") int cartid) {
+        cartService.deleteCart(profileId, cartid);
         return "Product Removed From Cart!";
     }
 
+    @PutMapping("/updateCart/{profileId}/{cartid}")
+    public Cart updateCart(@PathVariable("profileId") int profileId, @PathVariable("cartid") int cartid, @RequestBody Cart cart) {
+        return cartService.updateCart(profileId, cartid, cart);
+    }
+
+    @PutMapping("/updateCartItemQuantity/{profileId}/{cartid}/{productid}")
+    public void updateCartItemQuantity(@PathVariable("profileId") int profileId, @PathVariable int cartid, @PathVariable int productid, @RequestParam int newQuantity) {
+        cartService.updateCartItemQuantity(profileId, cartid, productid, newQuantity);
+    }
+
+    @DeleteMapping("/deleteCartItem/{profileId}/{cartid}/{productid}")
+    public void deleteCartItem(@PathVariable int profileId, @PathVariable int cartid, @PathVariable int productid) {
+        cartService.deleteCartItem(profileId, cartid, productid);
+    }
+
+    //-----
     @GetMapping("/getCart/{cartid}")
     public Cart getCart(@PathVariable("cartid") int cartid)
     {
         return cartService.getCart(cartid);
     }
 
-    @PutMapping("/updateCart/{cartid}")
-    public Cart updateCart(@PathVariable("cartid") int cartid,@RequestBody Cart cart)
-    {
-        return cartService.updateCart(cartid, cart);
+
+    @GetMapping("/getCartByProfileId/{profileId}")
+    public List<Cart> getCartByProfileId(@PathVariable("profileId") int profileId) {
+        return cartService.getCartByProfileId(profileId);
     }
 
-    @GetMapping("/getCartByProfileId/{profileid}")
-    public List<Cart> getCartByProfileId(@PathVariable("profileid") int profileid)
-    {
-        return cartService.getCartByProfileId(profileid);
-    }
-
-    @DeleteMapping("/deleteCartItem/{cartid}/{productid}")
-    public void deleteCartItem(@PathVariable int cartid, @PathVariable int productid)
-    {
-        cartService.deleteCartItem(cartid, productid);
-    }
-
-    @PutMapping("/updateCartItemQuantity/{cartid}/{productid}")
-    public void updateCartItemQuantity(@PathVariable int cartid, @PathVariable int productid, @RequestParam int newQuantity)
-    {
-        cartService.updateCartItemQuantity(cartid, productid, newQuantity);
-    }
-
-    @GetMapping("/cartTotal/{cartId}")
-    public float getCartTotalByCartId(@PathVariable int cartId) {
-        return cartService.getCartTotalByCartId(cartId);
+    @GetMapping("/getCartTotalByCartId/{profileId}/{cartId}")
+    public float getCartTotalByCartId(@PathVariable("profileId") int profileId, @PathVariable("cartId") int cartId) {
+        return cartService.getCartTotalByCartId(profileId, cartId);
     }
 
 

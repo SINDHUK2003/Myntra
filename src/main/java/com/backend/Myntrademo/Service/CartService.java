@@ -30,93 +30,124 @@ public class CartService {
     @Autowired
     private OrderRepo orderRepo;
 
+    @Autowired
+    private ProfileService profileService;
 
-    public Cart createCart(Cart cart) {
-        Profile profile = profileRepo.findById(cart.getProfile().getProfileid()).orElse(null);
-        Product product = productRepo.findById(cart.getProduct().getProductid()).orElse(null);
 
-        if (profile == null || product == null) {
-            throw new RuntimeException("Profile or Product not found.");
+    public Cart createCart(int profileId, Cart cart) {
+        if (profileService.isUserLoggedIn(profileId)) {
+            Profile profile = profileRepo.findById(profileId).orElse(null);
+            Product product = productRepo.findById(cart.getProduct().getProductid()).orElse(null);
+
+            if (profile == null || product == null) {
+                throw new RuntimeException("Profile or Product not found.");
+            }
+
+            if (product.getStock() <= 0) {
+                throw new RuntimeException("Product out of stock.");
+            }
+
+            cart.setProfile(profile);
+            cart.setProduct(product);
+
+            return cartRepo.save(cart);
+        } else {
+            throw new IllegalArgumentException("Only logged-in users can create carts.");
         }
-
-        if (product.getStock() <= 0) {
-            throw new RuntimeException("Product out of stock.");
-        }
-
-        cart.setProfile(profile);
-        cart.setProduct(product);
-
-        return cartRepo.save(cart);
     }
 
-    public void deleteCart(int cartid) {
-        cartRepo.deleteById(cartid);
+    public void deleteCart(int profileId, int cartid) {
+        if (profileService.isUserLoggedIn(profileId)) {
+            cartRepo.deleteById(cartid);
+        } else {
+            throw new IllegalArgumentException("Only logged-in users can delete carts.");
+        }
     }
+
+    public Cart updateCart(int profileId, int cartid, Cart cart) {
+        if (profileService.isUserLoggedIn(profileId)) {
+            Cart cart1 = cartRepo.findById(cartid).orElseThrow(() -> new RuntimeException("Cart not found with CartId: " + cartid));
+            cart1.setQuantity(cart.getQuantity());
+            cart1.setCartstatus(cart.getCartstatus());
+
+            return cartRepo.save(cart1);
+        } else {
+            throw new IllegalArgumentException("Only logged-in users can update carts.");
+        }
+    }
+
+    public void updateCartItemQuantity(int profileId, int cartid, int productid, int newQuantity) {
+        if (profileService.isUserLoggedIn(profileId)) {
+            Optional<Cart> optionalCart = cartRepo.findById(cartid);
+
+            if (optionalCart.isPresent()) {
+                Cart cart = optionalCart.get();
+
+                if (cart.getProduct().getProductid() == productid) {
+                    int currentStock = cart.getProduct().getStock();
+                    if (newQuantity <= currentStock) {
+                        cart.setQuantity(newQuantity);
+                        cartRepo.save(cart);
+                    } else {
+                        throw new RuntimeException("Requested quantity exceeds available stock. Current stock: " + currentStock);
+                    }
+                } else {
+                    throw new RuntimeException("Product with id " + productid + " not found in cart with id " + cartid);
+                }
+            } else {
+                throw new RuntimeException("Cart with id " + cartid + " not found");
+            }
+        } else {
+            throw new IllegalArgumentException("Only logged-in users can update cart item quantities.");
+        }
+    }
+
+    public void deleteCartItem(int profileId, int cartid, int productid) {
+        if (profileService.isUserLoggedIn(profileId)) {
+            Optional<Cart> optionalCart = cartRepo.findById(cartid);
+
+            if (optionalCart.isPresent()) {
+                Cart cart = optionalCart.get();
+
+                if (cart.getProduct().getProductid() == productid) {
+                    cartRepo.delete(cart);
+                } else {
+                    throw new RuntimeException("Product with id " + productid + " not found in cart with id " + cartid);
+                }
+            } else {
+                throw new RuntimeException("Cart with id " + cartid + " not found");
+            }
+        } else {
+            throw new IllegalArgumentException("Only logged-in users can delete cart items.");
+        }
+    }
+
+
 
     public Cart getCart(int cartid) {
         Optional<Cart> dispCart = cartRepo.findById(cartid);
         return dispCart.orElse(null);
     }
 
-    public Cart updateCart(int cartid, Cart cart) {
-        Cart cart1 = cartRepo.findById(cartid).orElseThrow(() -> new RuntimeException("Cart not found with CartId :" + cartid));
-        cart1.setQuantity(cart.getQuantity());
-        cart1.setCartstatus(cart.getCartstatus());
-
-        return cartRepo.save(cart1);
-    }
 
     public List<Cart> getCartByProfileId(int profileId) {
-        return cartRepo.getCartByProfileId(profileId);
-    }
-
-
-    public void deleteCartItem(int cartid, int productid) {
-        Optional<Cart> optionalCart = cartRepo.findById(cartid);
-
-        if (optionalCart.isPresent()) {
-            Cart cart = optionalCart.get();
-
-            if (cart.getProduct().getProductid() == productid) {
-                cartRepo.delete(cart);
-            } else {
-                throw new RuntimeException("Product with id " + productid + " not found in cart with id " + cartid);
-            }
+        if (profileService.isUserLoggedIn(profileId)) {
+            return cartRepo.getCartByProfileId(profileId);
         } else {
-            throw new RuntimeException("Cart with id " + cartid + " not found");
+            throw new IllegalArgumentException("Only logged-in users can retrieve their carts.");
         }
     }
 
-    public void updateCartItemQuantity(int cartid, int productid, int newQuantity) {
-        Optional<Cart> optionalCart = cartRepo.findById(cartid);
+    public float getCartTotalByCartId(int profileId, int cartId) {
+        if (profileService.isUserLoggedIn(profileId)) {
+            Cart cart = cartRepo.findById(cartId).orElseThrow(() -> new RuntimeException("Cart not found with CartId: " + cartId));
 
-        if (optionalCart.isPresent()) {
-            Cart cart = optionalCart.get();
-
-            if (cart.getProduct().getProductid() == productid) {
-                int currentStock = cart.getProduct().getStock();
-                if (newQuantity <= currentStock) {
-                    cart.setQuantity(newQuantity);
-                    cartRepo.save(cart);
-                } else {
-                    throw new RuntimeException("Requested quantity exceeds available stock. Current stock: " + currentStock);
-                }
-            } else {
-                throw new RuntimeException("Product with id " + productid + " not found in cart with id " + cartid);
-            }
+            return cart.getProduct().getMrp() * cart.getQuantity();
         } else {
-            throw new RuntimeException("Cart with id " + cartid + " not found");
+            throw new IllegalArgumentException("Only logged-in users can retrieve their cart total.");
         }
     }
 
-
-
-    public float getCartTotalByCartId(int cartId) {
-        Cart cart = cartRepo.findById(cartId)
-                .orElseThrow(() -> new RuntimeException("Cart not found with CartId: " + cartId));
-
-        return cart.getProduct().getMrp() * cart.getQuantity();
-    }
 
 
 }

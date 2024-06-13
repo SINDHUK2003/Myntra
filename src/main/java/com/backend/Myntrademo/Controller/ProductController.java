@@ -1,6 +1,5 @@
 package com.backend.Myntrademo.Controller;
 
-import com.backend.Myntrademo.DTO.CreateProductDTO;
 import com.backend.Myntrademo.Entity.Category;
 import com.backend.Myntrademo.Entity.Gallery;
 import com.backend.Myntrademo.Entity.Product;
@@ -16,35 +15,28 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/createProduct")
-    public Product createProduct(@RequestBody CreateProductDTO createProductDTO)
-    {
-        Product product = createProductDTO.getProduct();
-        Category category = createProductDTO.getCategory();
-        Gallery gallery = createProductDTO.getGallery();
-
-        return productService.createProduct(product, category, gallery);
+    @PostMapping("/createProduct/{profileId}")
+    public Product createProduct(@PathVariable("profileId") int profileId, @RequestBody Product product) {
+        Category category = product.getCategory();
+        Gallery gallery = product.getGallery();
+        return productService.createProduct(profileId, product, category, gallery);
     }
 
-    @DeleteMapping("/deleteProduct/{productid}")
-    public String deleteProduct(@PathVariable("productid") int productid)
-    {
-        productService.deleteProduct(productid);
+    @DeleteMapping("/deleteProduct/{profileId}/{productId}")
+    public String deleteProduct(@PathVariable("profileId") int profileId, @PathVariable("productId") int productId) {
+        productService.deleteProduct(profileId, productId);
         return "Product deleted!";
     }
 
-    @GetMapping("/getProduct/{productid}")
-    public Product getProduct(@PathVariable("productid") int productid)
-    {
-        return productService.getProduct(productid);
+    @PutMapping("/updateProduct/{profileId}/{productId}")
+    public Product updateProduct(@PathVariable("profileId") int profileId, @PathVariable("productId") int productId, @RequestBody Product product) {
+        return productService.updateProduct(profileId, productId, product);
     }
 
-    @PutMapping("/updateProduct/{productid}")
-    public Product updateProduct(@PathVariable("productid") int productid, @RequestBody Product product)
-    {
-        return productService.updateProduct(productid, product);
+    @GetMapping("/getProduct/{productId}")
+    public Product getProduct(@PathVariable("productId") int productId) {
+        return productService.getProduct(productId);
     }
-
     @GetMapping("/getAllProducts")
     public List<Product> getAllProducts() {
         return productService.getAllProduct();
@@ -55,5 +47,29 @@ public class ProductController {
         return productService.searchProductByName(productname);
     }
 
+    @GetMapping("/ProductsAboveMRP/{price}")
+    public List<Product> ProductsAboveMRP(@PathVariable float price) {
+        return productService.ProductsAboveMRP(price);
+    }
+
+    @GetMapping("/ProductsBelowMRP/{price}")
+    public List<Product> ProductsBelowMRP(@PathVariable float price) {
+        return productService.ProductsBelowMRP(price);
+    }
+
+    @GetMapping("/SearchProductsByBrand/{brand}")
+    public List<Product> SearchProductsByBrand(@PathVariable String brand) {
+        return productService.SearchProductsByBrand(brand);
+    }
+
+    @GetMapping("/ProductsByPriceRange")
+    public List<Product> findProductsByPriceRange(@RequestParam float startPrice, @RequestParam float endPrice) {
+        return productService.findProductsByPriceRange(startPrice, endPrice);
+    }
+
+    @GetMapping("/searchProductByCategory/{category}")
+    public List<Product> searchProductByCategory(@PathVariable String category) {
+        return productService.searchProductByCategory(category);
+    }
 
 }
